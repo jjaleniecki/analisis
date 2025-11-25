@@ -15,6 +15,7 @@ public class Suma implements Callable<Integer> {
         int i = min, suma = 0;
         while(i<max){
             suma += arr[i];
+            i++;
         }
         return suma;
     }
