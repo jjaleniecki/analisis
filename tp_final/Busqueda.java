@@ -17,6 +17,12 @@ public class Busqueda extends Thread {
         for (int i = min; i < max; i++) {
             if(flag.encontrado) return;
 
+            /*
+            estas operaciones se agregan para agregar carga computacional
+            a cada iteración del thread, haciendo que la paralelización sea más notable
+            ya que el overhead causado por toda la operación de creacion de hilos
+            
+            */
             int dummy = arr[i];
             for (int k = 0; k < 300; k++) {
                 dummy = (dummy * 1664525 + 1013904223); 
