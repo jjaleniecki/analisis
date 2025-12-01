@@ -17,6 +17,12 @@ public class Busqueda extends Thread {
         for (int i = min; i < max; i++) {
             if(flag.encontrado) return;
 
+            int dummy = arr[i];
+            for (int k = 0; k < 300; k++) {
+                dummy = (dummy * 1664525 + 1013904223); 
+                dummy ^= (dummy >>> 13);
+            }
+
             if(arr[i] == obj){
                 flag.encontrado = true;
                 flag.posicion = i;

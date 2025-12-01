@@ -4,7 +4,7 @@ import java.util.Random;
 public class BusquedaParalela {
     final static int ARR_SIZE = 100000000;
     // final static int CANT_THREADS = ARR_SIZE/25000000;
-    final static int CANT_THREADS = 10;
+    final static int CANT_THREADS = 150;
     public static void main(String[] args) {
         Random rand = new Random();
         double time = System.nanoTime();
