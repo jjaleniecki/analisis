@@ -3,7 +3,6 @@ import java.util.Random;
 
 public class BusquedaParalela {
     final static int ARR_SIZE = 100000000;
-    // final static int CANT_THREADS = ARR_SIZE/25000000;
     final static int CANT_THREADS = 150;
     public static void main(String[] args) {
         Random rand = new Random();
@@ -32,7 +31,6 @@ public class BusquedaParalela {
     }
 
     public static int busqueda(int[] arr, int obj){
-        //int pos = -1;
         Busqueda[] hilosBusqueda = new Busqueda[CANT_THREADS];
         ThreadFlag tf = new ThreadFlag();
 
@@ -44,28 +42,11 @@ public class BusquedaParalela {
             hilosBusqueda[i].start();
         }
 
-        // for (int i = 0; i < CANT_THREADS; i++) {
-        //     try {
-        //         hilosBusqueda[i].join();
-        //         int parcial = hilosBusqueda[i].getPos();
-        //         //System.out.println("PAR: " + parcial +  " POS: " + pos);
-        //         if (parcial != -1) {
-        //             pos = parcial;
-        //             for(int j = 0; i<j-1; j++){
-        //                 hilosBusqueda[i].interrupt();
-        //             }
-        //             break;
-        //         }
-                
-        //     } catch (Exception e) {
-        //     }            
-        // }
-
         for (Busqueda busqueda : hilosBusqueda) {
             try {
                 busqueda.join();
             } catch (Exception e) {
-                // TODO: handle exception
+                System.out.println("Excepcion");
             }
         }
         return tf.posicion;
